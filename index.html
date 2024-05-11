@@ -25,7 +25,10 @@
     <main class="wrapper">
 
         <section class="container balance">
-            <h2>Поточний баланс</h2>
+            <div class="container__header">
+                <h2>Поточний баланс</h2>
+                <button>Редагувати</button>
+            </div>
             <p class="balance__info">23,500.55₴</p>
             <button class="balance__button balance__button_income">Дохід</button>
             <button class="balance__button balance__button_spending">Витрати</button>
@@ -36,30 +39,30 @@
         </section>
 
         <div class="container transaction">
-            <div class="transaction__header">
+            <div class="container__header">
                 <h2>Нещодавні транзакції</h2>
                 <button>Переглянути усі</button>
             </div>
             <div class="transaction__block">
-                <span class="transaction__icon"><img src="img/icons/grocery-1.png" alt="food icon"></span>
+                <span class="transaction__icon"><img src="img/icons/shopping-cart.svg" alt="food icon"></span>
                 <p>Продукти харчування</p>
                 <p class="transaction__info_spending">-120₴</p>
             </div>
 
             <div class="transaction__block">
-                <span class="transaction__icon"><img src="img/icons/salary-1.png" alt="salary icon"></span>
+                <span class="transaction__icon"><img src="img/icons/money.svg" alt="salary icon"></span>
                 <p>Заробітня плата</p>
                 <p class="transaction__info_income">+8200₴</p>
             </div>
 
             <div class="transaction__block">
-                <span class="transaction__icon"><img src="img/icons/car-1.png" alt="food icon"></span>
+                <span class="transaction__icon"><img src="img/icons/car.svg" alt="food icon"></span>
                 <p>Авто</p>
                 <p class="transaction__info_spending">-1200₴</p>
             </div>
 
             <div class="transaction__block">
-                <span class="transaction__icon"><img src="img/icons/house.png" alt="food icon"></span>
+                <span class="transaction__icon"><img src="img/icons/payments.svg" alt="food icon"></span>
                 <p>Комунальні платежі</p>
                 <p class="transaction__info_spending">-1710₴</p>
             </div>
@@ -71,7 +74,10 @@
 
 
         <section class="container wishlist">
-            <h2>Список бажань</h2>
+            <div class="container__header">
+                <h2>Список бажань</h2>
+                <button>Налаштування</button>
+            </div>
             <div class="wishlist__blocks">
                 <div class="wishlist__block" style="background-image: url(img/car.jpg);">
                     <div class="wishlist__progress-bar">
@@ -104,7 +110,10 @@
         </section>
 
         <section class="container statisctics">
-            <h2>Статистика</h2>
+            <div class="container__header">
+                <h2>Статистика</h2>
+                <button>Детальніше</button>
+            </div>
             <div class="statisctics__blocks">
                 <div>
                     <canvas id="myChart"></canvas>
@@ -178,7 +187,7 @@
             label: 'Прибуток',
             data: [10, 50, 30, 100],
         }],
-        labels: ['Січень', 'Лютий', 'Березень']
+        labels: ['Січень', 'Лютий', 'Березень', 'Квітень']
     },
     options: {
     scales: {

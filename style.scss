@@ -89,6 +89,20 @@ button {
     background-color: #fff;
     border-radius: 20px;
     padding: 20px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+            margin-bottom: 0;
+        }
+        button {
+            display: absolute;
+            background: none;
+            color: rgba(33, 33, 33, .5);
+        }
+        margin-bottom: 20px;
+    }
 }
 
 .balance {
@@ -138,20 +152,6 @@ button {
 }
 
 .transaction {
-    &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h2 {
-            margin-bottom: 0;
-        }
-        button {
-            display: absolute;
-            background: none;
-            color: rgba(33, 33, 33, .5);
-        }
-        margin-bottom: 20px;
-    }
     &__block {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -166,10 +166,10 @@ button {
         background-color: #f2f4f6;
         border-radius: 100%;
         padding: 5px;
-        width: 55px;
-        height: 55px;
+        width: 45px;
+        height: 45px;
         img {
-            width: 40px;
+            width: 30px;
         }
     }
     &__info {

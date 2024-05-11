@@ -88,6 +88,20 @@ button:hover {
   border-radius: 20px;
   padding: 20px;
 }
+.container__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.container__header h2 {
+  margin-bottom: 0;
+}
+.container__header button {
+  display: absolute;
+  background: none;
+  color: rgba(33, 33, 33, 0.5);
+}
 
 .balance__button {
   border-radius: 20px;
@@ -132,20 +146,6 @@ button:hover {
   width: 50%;
 }
 
-.transaction__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.transaction__header h2 {
-  margin-bottom: 0;
-}
-.transaction__header button {
-  display: absolute;
-  background: none;
-  color: rgba(33, 33, 33, 0.5);
-}
 .transaction__block {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -160,11 +160,11 @@ button:hover {
   background-color: #f2f4f6;
   border-radius: 100%;
   padding: 5px;
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
 }
 .transaction__icon img {
-  width: 40px;
+  width: 30px;
 }
 .transaction__info_spending {
   font-weight: bold;
