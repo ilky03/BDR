@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+    <nav class="nav">
+        <ul class="nav__link">
+            <li><a href="" class="nav__link_active">Головна</a></li>
+            <li><a href="">Список бажань</a></li>
+            <li><a href="">Статистика</a></li>
+        </ul>
+    </nav>
+    <nav class="nav_burger">
+        <span></span><span></span><span></span>
+    </nav>
+
+    <header class="header__main">
+        <h1>З поверненням, ilky03!</h1>
+    </header>
+
+    <main class="wrapper">
+
+        <section class="container balance">
+            <h2>Поточний баланс</h2>
+            <p class="balance__info">23,500.55₴</p>
+            <button class="balance__button balance__button_income">Дохід</button>
+            <button class="balance__button balance__button_spending">Витрати</button>
+        </section>
+
+        <section class="container quotes">
+            <h3 class="quotes__header">«Ризик виходить від незнання того, що ти робиш». — Уоррен Баффет</h3>
+        </section>
+
+        <div class="container transaction">
+            <h2>Нещодавні транзакції</h2>
+
+            <div class="transaction__block">
+                <span class="transaction__icon"><img src="img/icons/grocery-1.png" alt="food icon"></span>
+                <p>Продукти харчування</p>
+                <p class="transaction__info_spending">-120₴</p>
+            </div>
+
+            <div class="transaction__block">
+                <span class="transaction__icon"><img src="img/icons/salary-1.png" alt="salary icon"></span>
+                <p>Заробітня плата</p>
+                <p class="transaction__info_income">+8200₴</p>
+            </div>
+
+            <div class="transaction__block">
+                <span class="transaction__icon"><img src="img/icons/car-1.png" alt="food icon"></span>
+                <p>Авто</p>
+                <p class="transaction__info_spending">-1200₴</p>
+            </div>
+
+            <div class="transaction__block">
+                <span class="transaction__icon"><img src="img/icons/house.png" alt="food icon"></span>
+                <p>Комунальні платежі</p>
+                <p class="transaction__info_spending">-1710₴</p>
+            </div>
+
+        </div>
+
+
+
+
+
+        <section class="container wishlist">
+            <h2>Список бажань</h2>
+            <div class="wishlist__blocks">
+                <div class="wishlist__block" style="background-image: url(img/car.jpg);">
+                    <div class="wishlist__progress-bar">
+                        <div class="wishlist__progress-bar_done" style="width: 50%"></div>
+                        <p>50%</p>
+                        <div class="wishlist__progress-bar_remain" style="width: 50%"></div>
+                    </div>
+                </div>
+
+                <div class="wishlist__block" style="background-image: url(img/phone.jpg);">
+                    <div class="wishlist__progress-bar">
+                        <div class="wishlist__progress-bar_done" style="width: 33.3%"></div>
+                        <p>33,3%</p>
+                        <div class="wishlist__progress-bar_remain" style="width: 67.7%"></div>
+                    </div>
+                </div>
+
+                <div class="wishlist__block" style="background-image: url(img/whell.jpg);">
+                    <div class="wishlist__progress-bar">
+                        <div class="wishlist__progress-bar_done" style="width: 2%"></div>
+                        <p>2%</p>
+                        <div class="wishlist__progress-bar_remain" style="width :98%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container statisctics">
+            <h2>Статистика</h2>
+            <div class="statisctics__blocks">
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div>
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </section>    
+
+    </main>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+
+        const data = {
+        labels: ['Комунальні платежі', 'Авто', 'Продукти', 'Одяг та взуття', 'Техніка'],
+        datasets: [
+            {
+            label: 'Витрати',
+            data: [12, 19, 3, 5, 2],
+            }
+        ]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Doughnut Chart'
+                },
+
+                },
+                hoverOffset: 10,
+            },
+        };
+        new Chart(ctx, config);
+       
+        const config2 = {
+  type: 'scatter',
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+};
+        const ctx2 = document.getElementById('myChart2');
+        const mixedChart = new Chart(ctx2, {
+    data: {
+        datasets: [{
+            type: 'bar',
+            label: 'Витрати',
+            data: [10, 20, 30, 40]
+        }, {
+            type: 'line',
+            label: 'Прибуток',
+            data: [10, 50, 30, 100],
+        }],
+        labels: ['Січень', 'Лютий', 'Березень']
+    },
+    options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      }
+    }
+  }
+});
+
+const ctx3 = document.getElementById('myChart3');
+const data2 = {
+  labels: [
+    'Комунальні',
+    'Авто',
+    'Продукти',
+    'Одяг та взуття',
+    'Техніка',
+  ],
+  datasets: [{
+    label: 'Витрати цього місяця',
+    data: [65, 59, 90, 81, 56],
+    fill: true,
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgb(255, 99, 132)',
+    pointBackgroundColor: 'rgb(255, 99, 132)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(255, 99, 132)'
+  }, {
+    label: 'Витрати минулого місяця',
+    data: [28, 48, 40, 19, 96],
+    fill: true,
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgb(54, 162, 235)',
+    pointBackgroundColor: 'rgb(54, 162, 235)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(54, 162, 235)'
+  }]
+};
+        const mixedChart2 = new Chart(ctx3, {
+            type: 'radar',
+  data: data2,
+  options: {
+    elements: {
+      line: {
+        borderWidth: 3
+      }
+    }
+  },
+});
+
+      </script>
+</body>
+</html>
