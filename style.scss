@@ -29,6 +29,13 @@ h2 {
     margin-bottom: 20px;
 }
 
+button {
+    border: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .header {
     &__main {
         margin: 40px 20px 0;
@@ -87,7 +94,6 @@ h2 {
 .balance {
     &__button {
         border-radius: 20px;
-        border: 0;
         padding: 20px;
         margin: 10px 0;
         width: 100%;
@@ -132,6 +138,20 @@ h2 {
 }
 
 .transaction {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+            margin-bottom: 0;
+        }
+        button {
+            display: absolute;
+            background: none;
+            color: rgba(33, 33, 33, .5);
+        }
+        margin-bottom: 20px;
+    }
     &__block {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -180,6 +200,22 @@ h2 {
         background-size: cover;
         width: calc(50% - 10px);
         height: 150px;
+        &_add-new {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f2f4f6;
+            p {
+                padding: 20px;
+                font-weight: 800;
+                font-size: 9vh;
+                color: rgba(33, 33, 33, .5);
+            }
+            &:hover {
+                background-color: rgba(254, 212, 3, .2);
+                cursor: pointer;
+            }
+        }
     }
 
     &__progress-bar {
@@ -224,6 +260,7 @@ h2 {
 
     .statisctics__blocks {
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
