@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Головна сторінка</title>
     <link rel="stylesheet" href="style.css">
   </head>
 <body>
     <nav class="nav">
         <ul class="nav__link">
-            <li><a href="" class="nav__link_active">Головна</a></li>
-            <li><a href="">Список бажань</a></li>
+            <li><a href="index.html" class="nav__link_active">Головна</a></li>
             <li><a href="">Статистика</a></li>
+            <li><a href="">Налаштування</a></li>
         </ul>
     </nav>
-    <nav class="nav_burger">
-        <span></span><span></span><span></span>
+    <nav class="nav_bottom">
+        <ul class="nav__link">
+            <li class="nav__link_active"><a href="index.html"><img src="img/icons/home.svg" alt="home icon"><br>Головна</a></li>
+            <li><a href=""><img src="img/icons/monitoring.svg" alt="heart icon"><br>Статистика</a></li>
+            <li><a href=""><img src="img/icons/setting.svg" alt="heart icon"><br>Налаштування</a></li>
+        </ul>
     </nav>
 
     <header class="header__main">
@@ -38,7 +42,7 @@
             <h3 class="quotes__header">«Ризик виходить від незнання того, що ти робиш». — Уоррен Баффет</h3>
         </section>
 
-        <div class="container transaction">
+        <section class="container transaction">
             <div class="container__header">
                 <h2>Нещодавні транзакції</h2>
                 <button>Переглянути усі</button>
@@ -67,11 +71,7 @@
                 <p class="transaction__info_spending">-1710₴</p>
             </div>
 
-        </div>
-
-
-
-
+        </section>
 
         <section class="container wishlist">
             <div class="container__header">
