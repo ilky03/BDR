@@ -1,0 +1,37 @@
+.header {
+    &__main {
+        margin: 40px 20px 0;
+        text-align: left;
+        max-width: 1400px;
+        width: 100%;
+        font-size: 2vh;
+    }
+}
+
+.wrapper {
+    max-width: 1400px;
+    display: grid;
+    margin: 30px 0;
+    grid-template-columns: repeat(3, calc(100% / 3));
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+            margin-bottom: 0;
+        }
+        button {
+            display: absolute;
+            background: none;
+            color: rgba(33, 33, 33, .5);
+        }
+        margin-bottom: 20px;
+    }
+}

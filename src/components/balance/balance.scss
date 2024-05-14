@@ -1,0 +1,61 @@
+.balance {
+    &__button, .balance-input {
+        border-radius: 20px;
+        padding: 20px;
+        margin: 10px 0;
+        width: 100%;
+        &_income {
+            background-color: rgba(44, 174, 63, .2);
+            font-weight: bold;
+            color: #2cae3f;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(9.4px);
+            -webkit-backdrop-filter: blur(9.4px);
+        }
+        &_spending {
+            background-color: rgba(222, 48, 48, .2);
+            font-weight: bold;
+            color: #de3030;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(9.4px);
+            -webkit-backdrop-filter: blur(9.4px);
+        }
+    }
+    &__info {
+        font-size: 5.5vh;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .balance-input {
+        border: none;
+        background-color: #f2f4f6;
+        font-weight: bold;
+    }     
+    
+    .category {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 20px 0;
+
+        input[type="radio"] {
+            display: none;
+
+            &:checked + .radio-btn {
+                background-color: #212121;
+                color: #fff;
+            }
+        }
+
+        .radio-btn {
+            background-color: #f2f4f6;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: .5s;
+            margin: 10px 0;
+        }
+    }
+}

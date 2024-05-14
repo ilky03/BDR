@@ -1,0 +1,14 @@
+.quotes {
+    display: flex;
+    align-items: center;
+    background: url("../../resources/img/quotes-bg-1.png") ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    &__header {
+        font-size: 2vh;
+        width: 50%;
+        
+    }
+}
