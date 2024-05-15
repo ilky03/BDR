@@ -4,7 +4,10 @@ function WishBlock({done, sum, imgUrl}) {
     let doneInPerc = 100 - remainInPerc;
 
     return (
-        <div className="wishlist__block" style={{backgroundImage: `url(${imgUrl})`}}>
+        <div 
+            className="wishlist__block"
+            style={{backgroundImage: `url(${imgUrl})`}}
+        >
             <div className="wishlist__progress-bar">
                 <div className="wishlist__progress-bar_done" style={{width: `${doneInPerc}%`}}></div>
                 <p>{doneInPerc.toFixed(2)}%</p>

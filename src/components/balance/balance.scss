@@ -4,6 +4,7 @@
         padding: 20px;
         margin: 10px 0;
         width: 100%;
+        font-size: 1.5vh;
         &_income {
             background-color: rgba(44, 174, 63, .2);
             font-weight: bold;
@@ -11,6 +12,10 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(9.4px);
             -webkit-backdrop-filter: blur(9.4px);
+            transition: .5s;
+            &:hover {
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            }
         }
         &_spending {
             background-color: rgba(222, 48, 48, .2);
@@ -19,6 +24,10 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(9.4px);
             -webkit-backdrop-filter: blur(9.4px);
+            transition: .5s;
+            &:hover {
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            }
         }
     }
     &__info {

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import Balance from '../balance/Balance';
 import Quotes from '../quotes/Quotes';
-import Transaction from '../transaction/Transaction';
+import Transactions from '../transactions/Transactions';
 import Wishlist from '../wishlist/Wishlist';
 import Statistics from '../statistics/Statistics';
 import Form from '../form/Form';
@@ -22,8 +22,8 @@ function MainPage() {
         get(url).then(data => setUserData(data));
     }, [dbUpdateChecker]);
 
-    const onChangeBalance = (newVal) => {
-        update(url, {balance: +userData.balance + newVal});
+    const onChangeBalance = (newVal, operationType) => {
+        update(url, {balance: operationType === 'income' ? +userData.balance + newVal : +userData.balance - newVal});
         setDbUpdateChecker(!dbUpdateChecker);
     }
 
@@ -42,7 +42,8 @@ function MainPage() {
                     handleChangeBalance={onChangeBalance}
                     userBalance={userData && userData.balance}/>
                 <Quotes />
-                <Transaction />
+                <Transactions 
+                   dbUpdateCheck={dbUpdateChecker}/>
                 <Wishlist 
                     isChangedWishlist={isFormOpen}
                     handleAddNewWish={onChangeFormStatus}/>

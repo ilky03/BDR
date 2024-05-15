@@ -10,7 +10,7 @@ function Wishlist({handleAddNewWish, isChangedWishlist}) {
     const [wishlistData, setWishlistData] = useState();
 
     useEffect(() => {
-        makeQuery('/wishlist/').then(data => {console.log(data);setWishlistData(data)});
+        makeQuery('/wishlist/').then(data => {setWishlistData(data)});
     }, [isChangedWishlist])
 
     return (
@@ -20,13 +20,15 @@ function Wishlist({handleAddNewWish, isChangedWishlist}) {
                 <button>Налаштування</button>
             </div>
             <div className="wishlist__blocks">
-                {wishlistData && wishlistData.map((item, key) => (
-                    <WishBlock
-                        done={item.done}
-                        sum={item.sum}
-                        imgUrl={item.link}
-                    />
-                ))}
+            {wishlistData && wishlistData.map((item) => (
+                <WishBlock
+                    key={item.id} // Додали унікальний ключ
+                    id={item.id}
+                    done={item.done}
+                    sum={item.sum}
+                    imgUrl={item.link}
+                />
+            ))}
                 <button onClick={handleAddNewWish} className="wishlist__block wishlist__block_add-new">
                     <p>+</p>
                 </button>

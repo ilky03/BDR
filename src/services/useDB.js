@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, updateDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
+import { getFirestore, doc, limit, setDoc, updateDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -69,5 +69,16 @@ export default function useDB() {
         querySnapshot.forEach((snap) => data.push(snap.data()));
         return data;
     }
-    return {get, create, update, makeQuery, isLoading}
+
+    function generateID(length = 20) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+      }
+      
+    return {get, create, update, makeQuery, generateID, isLoading}
 }
