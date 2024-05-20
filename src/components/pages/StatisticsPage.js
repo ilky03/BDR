@@ -1,6 +1,22 @@
+import { useState, useEffect } from 'react';
+
+import useDB from '../../services/useDB';
+
+import Statistics from '../statistics/Statistics';
+
 function StatisticsPage() {
+    const { makeQuery } = useDB();
+    
+    const [transactionData, setTransactionData] = useState();
+
+    useEffect(() => {
+        makeQuery('/transaction/').then((data) => {setTransactionData(data.reverse())});
+    }, []);
+
     return (
-        <h1>Statistics</h1>
+        <Statistics 
+            transactionData={transactionData}
+            flag={true} />
     )
 }
 

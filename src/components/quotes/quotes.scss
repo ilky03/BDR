@@ -1,14 +1,6 @@
 .quotes {
-    display: flex;
-    align-items: center;
-    background: url("../../resources/img/quotes-bg-1.png") ;
-    background-position: center;
-    background-size: contain;
+    background: url("https://miro.medium.com/v2/resize:fit:952/1*OAXivevUVDA6ddtq-7jwVw.gif") ;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: right;
-    &__header {
-        font-size: 2vh;
-        width: 50%;
-        
-    }
+    background-position: center;
 }

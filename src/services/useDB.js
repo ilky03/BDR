@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, limit, setDoc, updateDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
+import { getFirestore, doc, setDoc, deleteDoc, updateDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -69,6 +69,17 @@ export default function useDB() {
         querySnapshot.forEach((snap) => data.push(snap.data()));
         return data;
     }
+    async function deleteRecord(url) {
+        setIsLoading(true);
+        let path = doc(db, UID + url);
+        try {
+            await deleteDoc(path);
+        } catch(e) {
+            console.error(e)
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
     function generateID(length = 20) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -80,5 +91,5 @@ export default function useDB() {
         return result;
       }
       
-    return {get, create, update, makeQuery, generateID, isLoading}
+    return {get, create, update, deleteRecord, makeQuery, generateID, isLoading}
 }

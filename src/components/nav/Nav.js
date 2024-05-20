@@ -17,9 +17,9 @@ function AppHeader() {
             </nav>
             <nav className="nav_bottom">
                 <ul className="nav__link">
-                    <li><NavLink to='/' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={homeIcon} alt="home icon" />Головна</NavLink></li>
-                    <li><NavLink to='/statistics' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={monitoringIcon} alt="statistics icon" />Статистика</NavLink></li>
-                    <li><NavLink to='/settings' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={settingIcon} alt="settings icon" />Налаштування</NavLink></li>
+                    <li><NavLink to='/' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={homeIcon} alt="home icon" /></NavLink></li>
+                    <li><NavLink to='/statistics' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={monitoringIcon} alt="statistics icon" /></NavLink></li>
+                    <li><NavLink to='/settings' style={({isActive}) => ({borderBottom: isActive ? '2px solid' : 'none'})}><img src={settingIcon} alt="settings icon" /></NavLink></li>
                 </ul>
             </nav>
         </>

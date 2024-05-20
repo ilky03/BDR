@@ -5,28 +5,35 @@ import useDB from '../../services/useDB';
 import WishBlock from '../wishBlock/WishBlock';
 import './wishlist.scss';
 
-function Wishlist({handleAddNewWish, isChangedWishlist}) {
-    const { makeQuery } = useDB();
+function Wishlist({handleAddNewWish, isChangedWishlist, handleEditWish}) {
+    const { makeQuery, deleteRecord } = useDB();
     const [wishlistData, setWishlistData] = useState();
+    const [isDeleted, setIsDeleted] = useState(false)
 
     useEffect(() => {
         makeQuery('/wishlist/').then(data => {setWishlistData(data)});
-    }, [isChangedWishlist])
+    }, [isChangedWishlist, isDeleted])
+ 
+    const handleDeleteWish = (id) => {
+        deleteRecord(`/wishlist/${id}`);
+        setIsDeleted(!isDeleted);
+    }   
 
     return (
         <section className="container wishlist">
             <div className="container__header">
                 <h2>Список бажань</h2>
-                <button>Налаштування</button>
             </div>
             <div className="wishlist__blocks">
             {wishlistData && wishlistData.map((item) => (
                 <WishBlock
-                    key={item.id} // Додали унікальний ключ
+                    key={item.id}
                     id={item.id}
                     done={item.done}
                     sum={item.sum}
                     imgUrl={item.link}
+                    handleDeleteWish={handleDeleteWish}
+                    handleEditWish={handleEditWish}
                 />
             ))}
                 <button onClick={handleAddNewWish} className="wishlist__block wishlist__block_add-new">

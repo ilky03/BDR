@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react';
 
-import useDB from '../../services/useDB';
-
 import Transaction from '../transaction/Transaction';
 import './transactions.scss';
 
-function Transactions({dbUpdateCheck}) {
+function Transactions({transactionData}) {
 
-    const {makeQuery} = useDB();
-    const [transactionData, setTransactionData] = useState();
     const [isWindowOpen, setIsWindowOpen] = useState(false);
+
     useEffect(() => {
-        makeQuery('/transaction/').then((data) => {setTransactionData(data.reverse())});
-    }, [dbUpdateCheck]);
+        if (isWindowOpen) {
+            document.body.classList.add('body-no-scroll');
+        } else {
+            document.body.classList.remove('body-no-scroll');
+        }
+    
+        return () => {
+            document.body.classList.remove('body-no-scroll');
+        };
+    }, [isWindowOpen]);
 
     const PopupTransaction = () => {
         return (
@@ -25,6 +30,7 @@ function Transactions({dbUpdateCheck}) {
                         category={transact.category}
                         value={transact.value}
                         operationType={transact.operationType}
+                        date={transact.date}
                     />
                 ))}
                 <button className="btn" onClick={() => setIsWindowOpen(false)}>Закрити</button>
@@ -39,14 +45,16 @@ function Transactions({dbUpdateCheck}) {
                 <h2>Нещодавні транзакції</h2>
                 <button onClick={() => setIsWindowOpen(true)}>Переглянути усі</button>
             </div>
-            {transactionData && transactionData.slice(0, 10).map((transact) => (
+            {transactionData && transactionData.slice(0, 9).map((transact) => { 
+            return (
                 <Transaction 
                     key={transact.id}
                     category={transact.category}
                     value={transact.value}
                     operationType={transact.operationType}
+                    date={transact.date}
                 />
-            ))}
+            )})}
 
             {isWindowOpen ? <PopupTransaction /> : null}
             

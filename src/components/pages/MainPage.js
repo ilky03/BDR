@@ -17,9 +17,15 @@ function MainPage() {
     const [dbUpdateChecker, setDbUpdateChecker] = useState(false);
     const {get, update} = useDB();
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [initialWishData, setInitialWishData] = useState(null);
+    const [editMode, setEditMode] = useState(false);
+
+    const {makeQuery} = useDB();
+    const [transactionData, setTransactionData] = useState();
 
     useEffect(() => {
         get(url).then(data => setUserData(data));
+        makeQuery('/transaction/').then((data) => {setTransactionData(data.reverse())});
     }, [dbUpdateChecker]);
 
     const onChangeBalance = (newVal, operationType) => {
@@ -29,6 +35,13 @@ function MainPage() {
 
     const onChangeFormStatus = () => {
         setIsFormOpen(!isFormOpen);
+        setEditMode(false);
+    }
+
+    const onEditWish = (initialData) => {
+        onChangeFormStatus();
+        setInitialWishData(initialData);
+        setEditMode(true);
     }
 
     return (
@@ -43,14 +56,19 @@ function MainPage() {
                     userBalance={userData && userData.balance}/>
                 <Quotes />
                 <Transactions 
-                   dbUpdateCheck={dbUpdateChecker}/>
+                    transactionData={transactionData}/>
                 <Wishlist 
                     isChangedWishlist={isFormOpen}
-                    handleAddNewWish={onChangeFormStatus}/>
-                <Statistics />
+                    handleAddNewWish={onChangeFormStatus}
+                    handleEditWish={onEditWish}/>
+                <Statistics 
+                    transactionData={transactionData}/>
                 <Form 
                     isFormOpen={isFormOpen}
-                    handleChangeFormStatus={onChangeFormStatus}/>
+                    handleChangeFormStatus={onChangeFormStatus}
+                    mode={editMode ? 'edit' : 'add'}
+                    initialData={initialWishData}
+                     />
             </main>
         </>
 

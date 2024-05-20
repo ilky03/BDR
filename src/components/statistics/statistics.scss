@@ -2,6 +2,73 @@
     &__blocks {
         display: flex;
         align-items: center;
-        gap: 20px;
+        flex-direction: column;
+        height: 100%;
     }
+    a {
+        color: rgba(33, 33, 33, .5);
+        font-weight: 400;
+        padding-bottom: 0;
+        font-size: 14px;
+    }
+}
+
+.full-statistics {
+    &__wrapper {
+        max-width: 1400px;
+        min-width: 80vw;
+        padding-bottom: 45px;
+    }
+    &__blocks {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        div {
+            padding: 20px;
+            border-radius: 20px;
+            margin: 15px;
+            background-color: #fff;
+        }
+    }
+    &__filter {
+        input {
+            padding: 20px;
+            border: none;
+            margin: 0 20px 15px 15px;
+            border-radius: 20px;
+            color: #212121;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .full-statistics {
+        &__blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            div:last-child {
+                grid-column: span 2;
+                height: 50vh;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .full-statistics {
+        &__blocks {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            div {
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+        &__filter {
+            input {
+                margin: 0 20px 15px 0px;
+            }
+        }
+    }
+    
 }
