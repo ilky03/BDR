@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, deleteDoc, updateDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
+import { 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    deleteDoc, 
+    updateDoc, 
+    getDoc, 
+    getDocs, 
+    query, 
+    collection,
+    enableIndexedDbPersistence 
+} from "firebase/firestore";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
+
 const firebaseConfig = {
     apiKey: "AIzaSyAotQpsLX54MfxvgOCIc11LfVImH36iDqE",
     authDomain: "finance-manager-372f2.firebaseapp.com",
@@ -15,10 +25,16 @@ const firebaseConfig = {
     measurementId: "G-4QKY1F85MM"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
+
 const db = getFirestore(app);
+
+enableIndexedDbPersistence(db).then(() => {
+    console.log("Offline persistence enabled successfully");
+}).catch((error) => {
+    console.error("Error enabling offline persistence:", error);
+});
 
 const UID = 'users/tjlRDGn2watycJT5gysj';
 export default function useDB() {
@@ -34,34 +50,37 @@ export default function useDB() {
                 data = response.data();
             }
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error("Error getting document:", error);
         } finally {
             setIsLoading(false);
         }
         return data;
     }
+
     async function create(url, data) {
-        setIsLoading(true)
+        setIsLoading(true);
         let path = doc(db, UID + url);
         try {
             await setDoc(path, data);
         } catch(e) {
-            console.error(e)
+            console.error("Error creating document:", e);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
+
     async function update(url, data) {
         setIsLoading(true);
         let path = doc(db, UID + url);
         try {
             await updateDoc(path, data);
         } catch(e) {
-            console.error(e)
+            console.error("Error updating document:", e);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
+
     async function makeQuery(url) {
         const customQuery = query(collection(db, UID + url));
         const querySnapshot = await getDocs(customQuery);
@@ -69,15 +88,16 @@ export default function useDB() {
         querySnapshot.forEach((snap) => data.push(snap.data()));
         return data;
     }
+
     async function deleteRecord(url) {
         setIsLoading(true);
         let path = doc(db, UID + url);
         try {
             await deleteDoc(path);
         } catch(e) {
-            console.error(e)
+            console.error("Error deleting document:", e);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
 
@@ -89,7 +109,7 @@ export default function useDB() {
           result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
-      }
-      
-    return {get, create, update, deleteRecord, makeQuery, generateID, isLoading}
+    }
+
+    return {get, create, update, deleteRecord, makeQuery, generateID, isLoading};
 }
