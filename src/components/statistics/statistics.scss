@@ -15,13 +15,12 @@
 
 .full-statistics {
     &__wrapper {
-        max-width: 1400px;
-        min-width: 80vw;
+        width: 80vw;
         padding-bottom: 45px;
     }
     &__blocks {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, calc(100% / 3));
         div {
             padding: 20px;
             border-radius: 20px;
@@ -44,11 +43,14 @@
     .full-statistics {
         &__blocks {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 50%);
             div:last-child {
                 grid-column: span 2;
                 height: 50vh;
             }
+        }
+        &__wrapper {
+            width: auto;
         }
     }
 }
@@ -68,6 +70,9 @@
             input {
                 margin: 0 20px 15px 0px;
             }
+        }
+        &__wrapper {
+            margin-bottom: 65px;
         }
     }
     

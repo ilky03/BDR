@@ -10,7 +10,7 @@
 }
 
 .wrapper {
-    max-width: 1400px;
+    width: 80vw;
     display: grid;
     margin: 30px 0;
     grid-template-columns: repeat(3, calc(100% / 3));

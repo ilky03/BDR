@@ -54,9 +54,12 @@ function MainPage() {
                 <Balance 
                     handleChangeBalance={onChangeBalance}
                     userBalance={userData && userData.balance}/>
-                <Quotes />
+                <Quotes 
+                    backgroundUrl={userData && userData.background}
+                />
                 <Transactions 
-                    transactionData={transactionData}/>
+                    transactionData={transactionData}
+                />
                 <Wishlist 
                     isChangedWishlist={isFormOpen}
                     handleAddNewWish={onChangeFormStatus}

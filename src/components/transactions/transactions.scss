@@ -64,3 +64,11 @@
         background-position: 0% 25%;
     }
 }
+
+@media screen and (max-width: 780px) {
+    .transaction {
+        p {
+            font-size: 10px;
+        }
+    }
+}

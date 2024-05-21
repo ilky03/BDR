@@ -58,7 +58,7 @@ function Transaction({category, value, operationType, date}) {
             return (
                 <>
                     <p className='transaction__date'>{date}</p>
-                    <span className="transaction__icon"><img src={iconUrl} alt="food icon" /></span>
+                    <span className="transaction__icon"><img src={iconUrl} alt={iconDescr} /></span>
                     <p>{category}</p>
                     <p className="transaction__info_spending">-{value}₴</p>
                 </>
