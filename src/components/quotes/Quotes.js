@@ -1,5 +1,5 @@
 import './quotes.scss';
-import defaultBackground from '../../resources/img/quotes-bg-1.png'
+import defaultBackground from '../../resources/img/bg.gif'
 function Quotes({ backgroundUrl }) {
     
     return (

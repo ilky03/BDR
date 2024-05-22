@@ -25,7 +25,7 @@ function SettingsPage() {
             </header>
 
             <main className="wrapper ">
-                <section className="container form">
+                <section className="container form form_settings">
                     <h3>Зміна імені</h3>
                     <form className="form__field" ref={nameFormRef} onSubmit={(e) => handleFormSubmit(e, nameFormRef)}>
                         <label htmlFor="profile-name">Нове ім'я</label>
@@ -34,7 +34,7 @@ function SettingsPage() {
                     </form>
                 </section>
 
-                <section className="container form">
+                <section className="container form form_settings">
                     <h3>Зміна тла головної сторінки</h3>
                     <form className="form__field" ref={bgFormRef} onSubmit={(e) => handleFormSubmit(e, bgFormRef)}>
                         <label htmlFor="profile-bg">Посилання на нове тло</label>
@@ -43,7 +43,7 @@ function SettingsPage() {
                     </form>
                 </section>
 
-                <section className="container form">
+                <section className="container form form_settings">
                     <h3>Зміна балансу</h3>
                     <form className="form__field" ref={balanceFormRef} onSubmit={(e) => handleFormSubmit(e, balanceFormRef)}>
                         <label htmlFor="profile-balance">Нове значення балансу</label>

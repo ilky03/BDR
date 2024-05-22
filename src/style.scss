@@ -196,6 +196,9 @@ button {
 
     .form {
         width: 85%;
+        &_settings {
+          width: auto;
+        }
     }
 }
 
